@@ -10,7 +10,8 @@ def main():
     ######################## READ USER SESSION ############################
     initCreateTmpFiles()
     user, password = readUserPassword()
-    
+    if not user:
+        return 0
     #########################################################################
     ######################## READ FILES SESSION ############################
     file, dataDir = readFilesSession()
