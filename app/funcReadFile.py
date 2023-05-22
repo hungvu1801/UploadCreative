@@ -96,20 +96,24 @@ def checkEnviromentVariables():
 def readUserPassword():
     user, password = checkEnviromentVariables()
     if not user or not password:
-        root = tk.Tk()
-        root.withdraw()
-        # Open file reader
-        fileName = filedialog.askopenfilename(title='Open Profile file')
-        with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "w") as wf:
-            wf.write(fileName)
-        with open(fileName) as f:
-            data = f.readlines()
-        data = [x.split(":") for x in data]
-        user = data[0][1].strip()
-        password = data[1][1].strip()
-        with open(os.path.join(currDir, "Tmp/userTmp.txt"), "w") as wf:
-            wf.write(f"user:{user}\npass:{password}")
-        return user, password
+        try:
+            root = tk.Tk()
+            root.withdraw()
+            # Open file reader
+            fileName = filedialog.askopenfilename(title='Open Profile file')
+            with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "w") as wf:
+                wf.write(fileName)
+            with open(fileName) as f:
+                data = f.readlines()
+            data = [x.split(":") for x in data]
+            user = data[0][1].strip()
+            password = data[1][1].strip()
+            with open(os.path.join(currDir, "Tmp/userTmp.txt"), "w") as wf:
+                wf.write(f"user:{user}\npass:{password}")
+            return user, password
+        except UnboundLocalError as err:
+            print(f"{err}")
+            return 0, 0
     else:
         currDir = os.getcwd()
         os.chdir(currDir)
