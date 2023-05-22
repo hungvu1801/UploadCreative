@@ -100,9 +100,6 @@ def readUserPassword():
         root.withdraw()
         # Open file reader
         fileName = filedialog.askopenfilename(title='Open Profile file')
-        currDir = os.getcwd()
-        os.chdir(currDir)
-        os.mkdir("Tmp")
         with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "w") as wf:
             wf.write(fileName)
         with open(fileName) as f:
