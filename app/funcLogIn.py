@@ -36,7 +36,7 @@ def checkDriverAndBinary():
 
 def initBrowser():
     chromeDriver, chromeBinary = checkDriverAndBinary()
-    if chromeDriver:
+    if chromeDriver and chromeBinary:
         try:
             currDir = os.getcwd()
             os.chdir(currDir)
@@ -66,6 +66,9 @@ def initBrowser():
         except Exception as err:
             print(f'{err}')
             return 0
+    else:
+        print("Initiate failed.")
+        return 0
 
 def browseWebsite(browser):
     try:

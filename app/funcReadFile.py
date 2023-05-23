@@ -92,15 +92,16 @@ def checkEnviromentVariables():
         print(f"{err}")
         return 0, 0
 
-
 def readUserPassword():
     user, password = checkEnviromentVariables()
+    currDir = os.getcwd()
+    os.chdir(currDir)
     if not user or not password:
         try:
             root = tk.Tk()
             root.withdraw()
             # Open file reader
-            currDir = os.getcwd()
+
             fileName = filedialog.askopenfilename(title='Open Profile file')
             with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "w") as wf:
                 wf.write(fileName)
@@ -116,9 +117,6 @@ def readUserPassword():
             print(f"{err}")
             return 0, 0
     else:
-        currDir = os.getcwd()
-        os.chdir(currDir)
-
         with open(os.path.join(currDir, "Tmp/userTmp.txt")) as f:
             data = f.readlines()
         data = list(x.split(":") for x in data)
