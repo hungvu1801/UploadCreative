@@ -8,10 +8,19 @@ def initCreateTmpFiles():
     os.chdir(currDir)
     try:
         os.mkdir("Tmp")
+    except FileExistsError:
+        pass
+    try:
         f = open(os.path.join(currDir,'Tmp/logProdError.txt'), 'w')
         f.close()
+    except FileExistsError:
+        pass
+    try:
         f = open(os.path.join(currDir,'Tmp/logCurrentUploadProd.txt'), 'w')
         f.close()
+    except FileExistsError:
+        pass
+    try:
         f = open(os.path.join(currDir,'Tmp/fileAndPicDirectories.txt'), 'w')
         f.close()
     except FileExistsError:
