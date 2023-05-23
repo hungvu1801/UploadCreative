@@ -9,6 +9,8 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import tkinter as tk
+from tkinter import filedialog
 
 def initBrowser():
     try:
@@ -29,7 +31,11 @@ def initBrowser():
             # Add path of userdata
             options.add_argument(f"--user-data-dir={userPath}")
             options.add_argument(r"--profile-directory=Profile 1")
-            browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+            root = tk.Tk()
+            root.withdraw()
+            chromeDriver = filedialog.askopenfilename(title="Open Chrome driver file.")
+            service = Service(executable_path=chromeDriver)
+            browser = webdriver.Chrome(service=service, options=options)
         except Exception:
             pass
         userPath = os.path.join(currDir, "userdata")
@@ -38,8 +44,16 @@ def initBrowser():
         options.add_argument(f"--user-data-dir={userPath}")
         #provide the profile name with which we want to open browser
         options.add_argument(r"--profile-directory=Profile 1")
-
-        browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        root = tk.Tk()
+        root.withdraw()
+        chromeDriver = filedialog.askopenfilename(title="Open Chrome driver file.")
+        chromeBinary = filedialog.askopenfilename(title="Open Chrome binary file.")
+        options.binary_location = chromeBinary
+        print(chromeDriver)
+        print(chromeBinary)
+        service = Service(executable_path=chromeDriver)
+        # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        browser = webdriver.Chrome(service=service, options=options)
         return browser
     except Exception as err:
         print(f'{err}')
