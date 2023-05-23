@@ -12,52 +12,60 @@ from selenium.webdriver.support import expected_conditions as EC
 import tkinter as tk
 from tkinter import filedialog
 
-def initBrowser():
+def checkDriverAndBinary():
     try:
         currDir = os.getcwd()
         os.chdir(currDir)
-        
-        # Config options
-        options = Options()
-        # options.add_argument("--headless=new")
-
-        options.page_load_strategy = 'normal'
-
-        # options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
-        try:
-            os.mkdir("userdata")
-            userPath = os.path.join(currDir, "userdata")
-            # Add path of userdata
-            options.add_argument(f"--user-data-dir={userPath}")
-            options.add_argument(r"--profile-directory=Profile 1")
+        with open(os.path.join(currDir, "Tmp/fileDriverAndBinary.txt"), "r") as f:
+            dirs = f.readlines()
+        if len(dirs) == 0:
             root = tk.Tk()
             root.withdraw()
             chromeDriver = filedialog.askopenfilename(title="Open Chrome driver file.")
+            chromeBinary = filedialog.askopenfilename(title="Open Chrome binary file.")
+            with open(os.path.join(currDir, "Tmp/fileDriverAndBinary.txt"), "w") as wf:
+                wf.write(f"{chromeDriver}\n{chromeBinary}")
+            return chromeDriver, chromeDriver
+        else:
+            chromeDriver = dirs[0].strip()
+            chromeDriver = dirs[1].strip()
+        return chromeDriver, chromeBinary
+    except FileNotFoundError as err:
+        print(f"{err}")
+        return 0, 0
+
+def initBrowser():
+    chromeDriver, chromeBinary = checkDriverAndBinary()
+    if chromeDriver:
+        try:
+            currDir = os.getcwd()
+            os.chdir(currDir)
+            
+            # Config options
+            options = Options()
+            # options.add_argument("--headless=new")
+
+            options.page_load_strategy = 'normal'
+
+            # options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+    
+            userPath = os.path.join(currDir, "userdata")
+            
+            # Add path of userdata
+            options.add_argument(f"--user-data-dir={userPath}")
+            #provide the profile name with which we want to open browser
+            options.add_argument(r"--profile-directory=Profile 1")
+            
+            options.binary_location = chromeBinary
+ 
             service = Service(executable_path=chromeDriver)
+            # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             browser = webdriver.Chrome(service=service, options=options)
-        except Exception:
-            pass
-        userPath = os.path.join(currDir, "userdata")
-        
-        # Add path of userdata
-        options.add_argument(f"--user-data-dir={userPath}")
-        #provide the profile name with which we want to open browser
-        options.add_argument(r"--profile-directory=Profile 1")
-        root = tk.Tk()
-        root.withdraw()
-        chromeDriver = filedialog.askopenfilename(title="Open Chrome driver file.")
-        chromeBinary = filedialog.askopenfilename(title="Open Chrome binary file.")
-        options.binary_location = chromeBinary
-        print(chromeDriver)
-        print(chromeBinary)
-        service = Service(executable_path=chromeDriver)
-        # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-        browser = webdriver.Chrome(service=service, options=options)
-        return browser
-    except Exception as err:
-        print(f'{err}')
-        return 0
+            return browser
+        except Exception as err:
+            print(f'{err}')
+            return 0
 
 def browseWebsite(browser):
     try:

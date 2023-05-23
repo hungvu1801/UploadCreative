@@ -11,6 +11,10 @@ def initCreateTmpFiles():
     except FileExistsError:
         pass
     try:
+        os.mkdir("userdata")
+    except FileExistsError:
+        pass
+    try:
         f = open(os.path.join(currDir,'Tmp/logProdError.txt'), 'w')
         f.close()
     except FileExistsError:

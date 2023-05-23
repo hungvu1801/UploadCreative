@@ -16,3 +16,4 @@ Tmp/
 userpass.txt
 userdata/
 */__pycache__/*
+upload_env/
