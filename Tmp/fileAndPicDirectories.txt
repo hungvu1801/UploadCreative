@@ -1,2 +1,2 @@
-D:/Hung/Data Science/Data Science Scheme/UpLoadCreative/Test/sample cf.xlsx
-D:/Hung/Data Science/Data Science Scheme/UpLoadCreative/Test/data
+C:/Users/Admin/Downloads/UploadCreative_Clone/Test/sample cf.xlsx
+C:/Users/Admin/Downloads/UploadCreative_Clone/Test/data

@@ -84,9 +84,11 @@ def checkEnviromentVariables():
             fileName = f.readline().strip()
         with open(fileName, "r") as f:
             data = f.readlines()
+        print(data)
         data = [x.split(":") for x in data]
         user = data[0][1].strip()
         password = data[1][1].strip()
+        print(user, password)
         return user, password
     except FileNotFoundError as err:
         print(f"{err}")
@@ -132,7 +134,6 @@ def readUserPassword():
 def checkFileAndDataDirectories():
     try:
         currDir = os.getcwd()
-        os.chdir(currDir)
         with open(os.path.join(currDir, "Tmp/fileAndPicDirectories.txt"), "r") as f:
             dirs = f.readlines()
         fileName = dirs[0].strip()

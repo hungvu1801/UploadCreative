@@ -29,3 +29,8 @@ def initCreateTmpFiles():
         f.close()
     except FileExistsError:
         pass
+    try:
+        f = open(os.path.join(currDir, "Tmp/fileDriverAndBinary.txt"), "w")
+        f.close()
+    except FileExistsError:
+        pass

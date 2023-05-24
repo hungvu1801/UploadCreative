@@ -12,10 +12,11 @@ requirements.txt
 .ipynb_checkpoints/
 app/__pycache__
 app/__pycache__/*
-Tmp/
+Tmp/*.txt
 userpass.txt
 userdata/
 */__pycache__/*
 upload_env/
 *.txt
 NAME.spec
+test.py
