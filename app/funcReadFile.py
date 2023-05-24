@@ -10,9 +10,15 @@ def getFileExcel():
         root = tk.Tk()
         root.withdraw()
         # Open file reader
-        fileName = filedialog.askopenfilename(title='Import files')
-        if not fileName:
-            return 0
+        fileName = filedialog.askopenfilename(title='Mở file Excel')
+        while True:
+            if not fileName:
+                return 0
+            _, extension = os.path.splitext(fileName)
+            if extension == ".xlsx":
+                break
+            print("Invalid file. Open file excel again.")
+            fileName = filedialog.askopenfilename(title='Mở file Excel')
         return fileName
 
     except Exception as err:
@@ -109,7 +115,7 @@ def readUserPassword():
             root.withdraw()
             # Open file reader
 
-            fileName = filedialog.askopenfilename(title='Open Profile file')
+            fileName = filedialog.askopenfilename(title='Mở file user-password')
             with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "w") as wf:
                 wf.write(fileName)
             with open(fileName, "r") as f:

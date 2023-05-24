@@ -4,7 +4,7 @@ from app.funcInsert import (insertProductName, insertCategoty,
                         insertProductTag, insertProductImages, 
                         insertProductZip, checkBoxes, submit, newItem)
 from app.funcReadFile import getPicsAndZip, getContent
-import time
+
 
 def uploadProductsSession(file, dataDir, browser):
     try:
@@ -32,19 +32,19 @@ def uploadProductsSession(file, dataDir, browser):
                 productName, description, price, categoryName, productTag = getContent(file, rowNum)
                 print(f"Upload SKU {idRow}, row: {rowNum + 1}")
                 if not insertProductName(browser, productName):
-                    _ = input("Nhập tên sản phẩm và nhấn enter.")
+                    _ = input("LỖI NHẬP TÊN. Nhập tên sản phẩm và nhấn enter.")
                 if not insertCategoty(browser, categoryName):
-                    _ = input("Nhập category và nhấn enter.")
+                    _ = input("LỖI NHẬP CATEGORY. Nhập category và nhấn enter.")
                 if not insertPrice(browser, price):
-                    _ = input("Nhập giá và nhấn enter.")
+                    _ = input("LỖI NHẬP GIÁ. Nhập giá và nhấn enter.")
                 if not insertDescription(browser, description):
-                    _ = input("Nhập description và nhấn enter.")
+                    _ = input("LỖI NHẬP DESCRIPTION. Nhập description và nhấn enter.")
                 if not insertProductTag(browser, productTag):
-                    _ = input("Nhập tag và nhấn enter.") 
+                    _ = input("LỖI NHẬP TAG. Nhập tag và nhấn enter.") 
                 if not insertProductImages(browser, listPic):
-                    _ = input("Upload product image và nhấn enter.") 
+                    _ = input("LỖI UPLOAD FILE IMAGE. Upload product image và nhấn enter.") 
                 if not insertProductZip(browser, zipfile):
-                    _ = input("Upload product zip và nhấn enter.") 
+                    _ = input("LỖI UPLOAD FILE ZIP. Upload product zip và nhấn enter.") 
                 if not checkBoxes(browser):
                     _ = input("Check box và nhấn enter.")
                 if not submit(browser, listPic):

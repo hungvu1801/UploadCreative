@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import tkinter as tk
@@ -21,8 +21,8 @@ def checkDriverAndBinary():
         if len(dirs) == 0:
             root = tk.Tk()
             root.withdraw()
-            chromeDriver = filedialog.askopenfilename(title="Open Chrome driver file.")
-            chromeBinary = filedialog.askopenfilename(title="Open Chrome binary exe file.")
+            chromeDriver = filedialog.askopenfilename(title="Mở file chromedriver.exe")
+            chromeBinary = filedialog.askopenfilename(title="Mở file chrome.exe (Nằm ở C:\Program Files\Google\Chrome\Application\chrome.exe).")
             with open(os.path.join(currDir, "Tmp/fileDriverAndBinary.txt"), "w") as wf:
                 wf.write(f"{chromeDriver}\n{chromeBinary}")
             return chromeDriver, chromeDriver
