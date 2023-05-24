@@ -101,7 +101,12 @@ def logIn(browser, user, password):
         time.sleep(1)        
         b_submit = browser.find_element(By.XPATH, "//button[@type='submit']")
         b_submit.send_keys(Keys.ENTER)
-
+        try:
+            WebDriverWait(browser, 20).until(
+                EC.presence_of_element_located(
+                    (By.LINK_TEXT, "Add Graphic")))
+        except Exception:
+            _ = input('On OTP page. Type OTP code press submit. Then press enter from terminal.')
         return browser
     except Exception as err:
         print(f'{err}')
