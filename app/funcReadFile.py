@@ -80,7 +80,7 @@ def checkEnviromentVariables():
     try:
         currDir = os.getcwd()
         os.chdir(currDir)
-        with open(os.path.join(currDir, "Tmp/fileAndPicDirectories.txt"), "r") as f:
+        with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "r") as f:
             fileName = f.readline().strip()
         with open(fileName, "r") as f:
             data = f.readlines()
@@ -92,6 +92,7 @@ def checkEnviromentVariables():
         return user, password
     except FileNotFoundError as err:
         print(f"{err}")
+        open(os.path.join(currDir, "Tmp/fileAndPicDirectories.txt"), "w").close()
         return 0, 0
     except UnicodeDecodeError as err:
         open(os.path.join(currDir, "Tmp/fileTmp.txt"), "w").close()
