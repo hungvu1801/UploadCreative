@@ -105,7 +105,7 @@ def readUserPassword():
             fileName = filedialog.askopenfilename(title='Open Profile file')
             with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "w") as wf:
                 wf.write(fileName)
-            with open(fileName) as f:
+            with open(fileName, "r") as f:
                 data = f.readlines()
             data = [x.split(":") for x in data]
             user = data[0][1].strip()
