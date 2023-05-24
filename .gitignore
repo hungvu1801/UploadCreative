@@ -18,3 +18,4 @@ userdata/
 */__pycache__/*
 upload_env/
 *.txt
+NAME.spec
