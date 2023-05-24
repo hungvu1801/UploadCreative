@@ -12,7 +12,7 @@ requirements.txt
 .ipynb_checkpoints/
 app/__pycache__
 app/__pycache__/*
-Tmp/*.txt
+Tmp/
 userpass.txt
 userdata/
 */__pycache__/*
