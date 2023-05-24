@@ -6,7 +6,7 @@ Testing_Phase.ipynb
 build/
 dist/
 driver/
-NAME.spec
+*.spec
 requirements.txt
 .vscode/
 .ipynb_checkpoints/
@@ -17,3 +17,4 @@ userpass.txt
 userdata/
 */__pycache__/*
 upload_env/
+*.txt
