@@ -47,9 +47,9 @@ def initBrowser():
 
             options.page_load_strategy = 'normal'
 
-            # options.add_argument('--no-sandbox')
+            options.add_argument('--no-sandbox')
             options.add_argument('--disable-dev-shm-usage')
-    
+
             userPath = os.path.join(currDir, "userdata")
             
             # Add path of userdata
