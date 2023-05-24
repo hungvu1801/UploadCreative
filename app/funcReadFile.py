@@ -82,7 +82,7 @@ def checkEnviromentVariables():
         os.chdir(currDir)
         with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "r") as f:
             fileName = f.readline().strip()
-        with open(fileName) as f:
+        with open(fileName, "r") as f:
             data = f.readlines()
         data = [x.split(":") for x in data]
         user = data[0][1].strip()
@@ -117,7 +117,7 @@ def readUserPassword():
             print(f"{err}")
             return 0, 0
     else:
-        with open(os.path.join(currDir, "Tmp/userTmp.txt")) as f:
+        with open(os.path.join(currDir, "Tmp/userTmp.txt"), "r") as f:
             data = f.readlines()
         data = list(x.split(":") for x in data)
         userOld = data[0][1].strip()
