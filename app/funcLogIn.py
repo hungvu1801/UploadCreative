@@ -22,7 +22,7 @@ def checkDriverAndBinary():
             root = tk.Tk()
             root.withdraw()
             chromeDriver = filedialog.askopenfilename(title="Open Chrome driver file.")
-            chromeBinary = filedialog.askopenfilename(title="Open Chrome binary file.")
+            chromeBinary = filedialog.askopenfilename(title="Open Chrome binary exe file.")
             with open(os.path.join(currDir, "Tmp/fileDriverAndBinary.txt"), "w") as wf:
                 wf.write(f"{chromeDriver}\n{chromeBinary}")
             return chromeDriver, chromeDriver
