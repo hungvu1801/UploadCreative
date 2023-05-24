@@ -28,7 +28,7 @@ def checkDriverAndBinary():
             return chromeDriver, chromeDriver
         else:
             chromeDriver = dirs[0].strip()
-            chromeDriver = dirs[1].strip()
+            chromeBinary = dirs[1].strip()
         return chromeDriver, chromeBinary
     except FileNotFoundError as err:
         print(f"{err}")

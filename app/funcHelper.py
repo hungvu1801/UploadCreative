@@ -17,24 +17,24 @@ def initCreateTmpFiles():
     try:
         f = open(os.path.join(currDir,'Tmp/logProdError.txt'), 'r')
         f.close()
-    except FileExistsError:
+    except FileNotFoundError:
         f = open(os.path.join(currDir,'Tmp/logProdError.txt'), 'w')
         f.close()
     try:
         f = open(os.path.join(currDir,'Tmp/logCurrentUploadProd.txt'), 'r')
         f.close()
-    except FileExistsError:
+    except FileNotFoundError:
         f = open(os.path.join(currDir,'Tmp/logCurrentUploadProd.txt'), 'w')
         f.close()
     try:
         f = open(os.path.join(currDir,'Tmp/fileAndPicDirectories.txt'), 'r')
         f.close()
-    except FileExistsError:
+    except FileNotFoundError:
         f = open(os.path.join(currDir,'Tmp/fileAndPicDirectories.txt'), 'w')
         f.close()
     try:
         f = open(os.path.join(currDir, "Tmp/fileDriverAndBinary.txt"), "r")
         f.close()
-    except FileExistsError:
+    except FileNotFoundError:
         f = open(os.path.join(currDir, "Tmp/fileDriverAndBinary.txt"), "w")
         f.close()
