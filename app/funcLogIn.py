@@ -48,6 +48,17 @@ def initBrowser():
             options.page_load_strategy = 'normal'
 
             options.add_argument('--no-sandbox')
+            ###########################################################################
+            # Changed dated 2023-06-29 
+            # Add more options
+            # Adding argument to disable the AutomationControlled flag 
+            options.add_argument("--disable-blink-features=AutomationControlled") 
+            # Exclude the collection of enable-automation switches 
+            options.add_experimental_option("excludeSwitches", ["enable-automation"]) 
+            
+            # Turn-off userAutomationExtension 
+            options.add_experimental_option("useAutomationExtension", False) 
+            ###########################################################################
             options.add_argument('--disable-dev-shm-usage')
 
             userPath = os.path.join(currDir, "userdata")
@@ -62,6 +73,12 @@ def initBrowser():
             service = Service(executable_path=chromeDriver)
             # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             browser = webdriver.Chrome(service=service, options=options)
+            ###########################################################################
+            # Changed dated 2023-06-29 
+            # Changing the property of the navigator value for webdriver to undefined 
+            browser.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})") 
+            
+            ###########################################################################
             return browser
         except Exception as err:
             print(f'{err}')
