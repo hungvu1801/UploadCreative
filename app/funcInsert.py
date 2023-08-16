@@ -19,8 +19,8 @@ def insertProductName(browser, productName):
     try:
         time.sleep(1)
         try:
-            b_cancle = browser.find_element(By.XPATH, "//button[@id='onesignal-slidedown-cancel-button']")
-            b_cancle.send_keys(Keys.ENTER)
+            b_cancel = browser.find_element(By.XPATH, "//button[@id='onesignal-slidedown-cancel-button']")
+            b_cancel.send_keys(Keys.ENTER)
         except Exception as err:
             print(f'{err}')
         WebDriverWait(browser, 20).until(
