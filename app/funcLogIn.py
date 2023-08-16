@@ -21,7 +21,7 @@ def checkDriverAndBinary():
         if len(dirs) == 0:
             root = tk.Tk()
             root.withdraw()
-            chromeDriver = filedialog.askopenfilename(title="Mở file chromedriver.exe")
+            chromeDriver = filedialog.askopenfilename(title="Mở file driver chromedriver.exe (file download)")
             chromeBinary = filedialog.askopenfilename(title="Mở file chrome.exe (Nằm ở C:\Program Files\Google\Chrome\Application\chrome.exe).")
             with open(os.path.join(currDir, "Tmp/fileDriverAndBinary.txt"), "w") as wf:
                 wf.write(f"{chromeDriver}\n{chromeBinary}")
