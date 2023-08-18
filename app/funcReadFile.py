@@ -114,7 +114,6 @@ def readUserPassword():
             root = tk.Tk()
             root.withdraw()
             # Open file reader
-
             fileName = filedialog.askopenfilename(title='Mở file user-password')
             with open(os.path.join(currDir, "Tmp/fileTmp.txt"), "w") as wf:
                 wf.write(fileName)

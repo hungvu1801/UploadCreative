@@ -20,13 +20,15 @@ def main():
 
     #########################################################################
     ############################ LOG IN SESSION #############################
+    # user = 1
+    # password = 1
     browser = logInSession(user, password)
     if not browser:
         return 0
         
     #########################################################################
     ############################ UPLOAD SESSION #############################
-    browser = uploadProductsSession(file, dataDir, browser)
-    if not browser:
-        return 0
-    browser.quit()
+    # browser = uploadProductsSession(file, dataDir, browser)
+    # if not browser:
+    #     return 0
+    # browser.quit()

@@ -47,7 +47,7 @@ def initBrowser():
 
             options.page_load_strategy = 'normal'
 
-            options.add_argument('--no-sandbox')
+            # options.add_argument('--no-sandbox')
             ###########################################################################
             # Changed dated 2023-06-29 
             # Add more options
@@ -62,17 +62,23 @@ def initBrowser():
             options.add_argument('--disable-dev-shm-usage')
 
             userPath = os.path.join(currDir, "userdata")
-            
             # Add path of userdata
             options.add_argument(f"--user-data-dir={userPath}")
             #provide the profile name with which we want to open browser
-            options.add_argument(r"--profile-directory=Profile 1")
+            options.add_argument(r"--profile-directory=Profile 2")
             
             options.binary_location = chromeBinary
  
             service = Service(executable_path=chromeDriver)
             # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             browser = webdriver.Chrome(service=service, options=options)
+            ###########################################################################
+            # Changed dated 2023-08-18
+            # Spoofing user-agent 
+            useragentSpoofing = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
+            browser.execute_cdp_cmd("Network.setUserAgentOverride", {"userAgent": useragentSpoofing}) 
+            print(browser.execute_script("return navigator.userAgent;"))
+
             ###########################################################################
             # Changed dated 2023-06-29 
             # Changing the property of the navigator value for webdriver to undefined 
@@ -89,7 +95,9 @@ def initBrowser():
 
 def browseWebsite(browser):
     try:
-        browser.get('https://www.creativefabrica.com/login/')
+        # browser.get('https://www.google.com/')
+        # _ = input()
+        browser.get("https://www.creativefabrica.com/login/")
         return browser
     except Exception as err:
         print(f'{err}')
