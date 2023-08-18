@@ -1,2 +1,0 @@
-C:/Users/Admin/Downloads/UploadCreative_Clone/driver/chromedriver.exe
-C:/Program Files/Google/Chrome Beta/Application/chrome.exe
