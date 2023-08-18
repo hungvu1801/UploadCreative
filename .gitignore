@@ -402,3 +402,4 @@ userdata/*
 *.spec
 Tmp/*
 userpass.txt
+*.spec
