@@ -405,3 +405,10 @@ userpass.txt
 *.spec
 *.txt
 */Tmp/*
+upload_venv/*
+*/__pycache__/*
+__pycache__/*
+*/__pycache__/
+app/__pycache__/*
+app/.ipynb_checkpoints/*
+.ipynb_checkpoint/*
